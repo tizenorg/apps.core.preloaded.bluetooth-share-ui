@@ -1,0 +1,19 @@
+Source: bluetooth-share-ui
+Section: main
+Priority: extra
+Maintainer: Hocheol Seo <hocheol.seo@samsung.com>, DoHyun Pyun <dh79.pyun@samsung.com>, InJun Yang <injun.yang@samsung.com>, Chanyeol Park <chanyeol.park@samsung.com>
+Uploaders: Sunil Behera <sunil.behera@samsung.com>, Syam Sidhardhan <s.syam@samsung.com>
+Build-Depends: debhelper (>= 5),libevas-dev, libecore-dev, libelm-dev, libappcore-efl-dev, libslp-utilx-dev, dlog-dev, libdbus-glib-1-dev, libglib2.0-dev, libaul-1-dev, libbluetooth-frwk-dev (>= 0.1.0), capi-appfw-application-dev, libbluetooth-share-dev
+Standards-Version: 0.1.0
+
+Package: org.tizen.bluetooth-share-ui
+Section: main
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libslp-utilx-0, libdlog-0
+Description: bluetooth share UI application
+
+Package: org.tizen.bluetooth-share-ui-dbg
+Section: debug
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: bluetooth share UI application (unstripped)

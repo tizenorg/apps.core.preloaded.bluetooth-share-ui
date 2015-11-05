@@ -1,0 +1,5 @@
+@PREFIX@/bin/bluetooth-share-ui
+@RESDIR@/edje/*
+@RESDIR@/images/*
+/opt/share/applications/org.tizen.bluetooth-share-ui.desktop
+/opt/share/icons/default/small/*

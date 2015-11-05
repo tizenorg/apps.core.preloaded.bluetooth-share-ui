@@ -1,0 +1,16 @@
+<manifest>
+    <define>
+        <domain name="org.tizen.bluetooth-share-ui"/>
+    </define>
+    <assign>
+        <filesystem path="/usr/apps/org.tizen.bluetooth-share-ui/bin/*" label="_"/>
+        <filesystem path="/usr/apps/org.tizen.bluetooth-share-ui/res/*" label="_"/>
+        <filesystem path="/usr/share/icons/default/small/org.tizen.bluetooth-share-ui.png" label="_"/>
+        <filesystem path="/usr/share/packages/org.tizen.bluetooth-share-ui.xml" label="_"/>
+        <filesystem path="/usr/apps/org.tizen.bluetooth-share-ui/shared/res/tables/bluetooth-share-ui_ChangeableColorTable.xml" label="_"/>
+        <filesystem path="/usr/apps/org.tizen.bluetooth-share-ui/shared/res/tables/bluetooth-share-ui_FontInfoTable.xml" label="_"/>
+    </assign>
+    <request>
+        <domain name="org.tizen.bluetooth-share-ui"/>
+    </request>
+</manifest>
