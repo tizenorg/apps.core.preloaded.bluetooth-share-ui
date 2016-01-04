@@ -25,7 +25,6 @@ org.tizen.bluetooth-share-ui system::share rwxat- ------
 org.tizen.bluetooth-share-ui pulseaudio rwxat- ------
 e17 org.tizen.bluetooth-share-ui -w---- ------
 org.tizen.bluetooth-share-ui device::app_logging -w---- ------
-org.tizen.bluetooth-share-ui sys-assert::core rwxat- ------
 org.tizen.bluetooth-share-ui privacy-manager::db r----l ------
 org.tizen.bluetooth-share-ui pkgmgr::db r----l ------
 org.tizen.bluetooth-share-ui tizen::vconf::public r----- ------
