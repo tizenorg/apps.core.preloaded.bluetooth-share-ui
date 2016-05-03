@@ -7,4 +7,8 @@
 		<icon>org.tizen.bluetooth-share-ui.png</icon>
 		<label>Bluetooth Share</label>
 	</ui-application>
+	<privileges>
+		<privilege>http://tizen.org/privilege/appmanager.launch</privilege>
+		<privilege>http://tizen.org/privilege/appmanager.kill</privilege>
+	</privileges>
 </manifest>
