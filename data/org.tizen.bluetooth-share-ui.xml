@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns="http://tizen.org/ns/packages" package="org.tizen.bluetooth-share-ui" version="0.0.14" install-location="internal-only">
+<manifest xmlns="http://tizen.org/ns/packages" package="org.tizen.bluetooth-share-ui" api-version="3.0" version="0.0.14" install-location="internal-only">
 	<label>Bluetooth Share UI</label>
 	<author email="injun.yang@samsung.com" href="www.samsung.com">Injun Yang</author>
 	<description>Bluetooth Share UI application</description>
-	<ui-application appid="org.tizen.bluetooth-share-ui" exec="/usr/apps/org.tizen.bluetooth-share-ui/bin/bluetooth-share-ui" nodisplay="true" taskmanage="false" multiple="false" type="capp" process-pool="true">
+	<ui-application appid="org.tizen.bluetooth-share-ui" exec="/usr/apps/org.tizen.bluetooth-share-ui/bin/bluetooth-share-ui" nodisplay="true" multiple="false" type="capp" taskmanage="false">
 		<icon>org.tizen.bluetooth-share-ui.png</icon>
 		<label>Bluetooth Share</label>
 	</ui-application>

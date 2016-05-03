@@ -31,8 +31,8 @@ extern "C" {
 #include <libintl.h>
 
 /*==============  String ================= */
-#define BT_COMMON_PKG		"ug-bluetooth-efl"
-#define BT_COMMON_RES		"/usr/apps/ug-bluetooth-efl/shared/res/locale/"
+#define BT_COMMON_PKG		"ug-setting-bluetooth-efl"
+#define BT_COMMON_RES		"/usr/ug/res/locale/"
 
 #define BT_PKGNAME "org.tizen.bluetooth-share-ui"
 #define BT_PREFIX "/usr/apps/"BT_PKGNAME
