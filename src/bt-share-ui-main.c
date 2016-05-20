@@ -195,7 +195,7 @@ static int __bt_share_launch_handler(bt_share_appdata_t *ad, bundle *b)
 
 		/* Get data from share DB */
 		db = bt_share_open_db();
-		retvm_if(!db, NULL, "fail to open db!");
+		retvm_if(!db, -1, "fail to open db!");
 
 		ad->tr_data_list = bt_share_get_completed_tr_data_list(db, ad->tr_type);
 		bt_share_close_db(db);

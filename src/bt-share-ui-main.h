@@ -46,7 +46,6 @@ extern "C" {
 #define EDJDIR	"/usr/apps/org.tizen.bluetooth-share-ui/res/edje"
 #define	EDJFILE	EDJDIR"/bt-share-layout.edj"
 #define EDJ_IMAGES	EDJDIR "/images.edj"
-#define VCONFKEY_SETAPPL_CHANGE_UI_THEME_INT VCONFKEY_SETAPPL_PREFIX"/change_ui/theme"
 
 #endif
 

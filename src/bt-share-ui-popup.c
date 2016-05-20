@@ -208,6 +208,7 @@ Evas_Object *_bt_create_ft_popup(bt_share_ft_popup_type_e type, bt_tr_data_t *in
 	char tmp[BT_GLOBALIZATION_STR_LENGTH] = { 0 };
 	char *name = NULL;
 	char *markup_text = NULL;
+	char *stms_str = NULL;
 
 	if (info->file_path == NULL) {
 		ERR("Invalid data");
@@ -227,7 +228,8 @@ Evas_Object *_bt_create_ft_popup(bt_share_ft_popup_type_e type, bt_tr_data_t *in
 		elm_object_part_text_set(popup, "title,text", BT_STR_SENT_FILES);
 		char file_size_str[BT_FILE_SIZE_STR] = { 0 };
 
-		snprintf(msg, sizeof(msg), BT_STR_TO_S, info->dev_name);
+		stms_str = BT_STR_TO_S;
+		snprintf(msg, sizeof(msg), stms_str, info->dev_name);
 		g_strlcat(msg, NEW_LINE, BT_GLOBALIZATION_STR_LENGTH);
 
 		name = strrchr(info->file_path, '/');
@@ -236,7 +238,8 @@ Evas_Object *_bt_create_ft_popup(bt_share_ft_popup_type_e type, bt_tr_data_t *in
 		else
 			name = info->file_path;
 
-		snprintf(tmp, sizeof(tmp), BT_STR_FILE_S, name);
+		stms_str = BT_STR_FILE_S;
+		snprintf(tmp, sizeof(tmp), stms_str, name);
 		g_strlcat(msg, tmp, BT_GLOBALIZATION_STR_LENGTH);
 		g_strlcat(msg, NEW_LINE, BT_GLOBALIZATION_STR_LENGTH);
 
@@ -251,7 +254,8 @@ Evas_Object *_bt_create_ft_popup(bt_share_ft_popup_type_e type, bt_tr_data_t *in
 			snprintf(file_size_str, sizeof(file_size_str),
 				"%dKB", info->size / 1024);
 
-		snprintf(tmp, sizeof(tmp), BT_STR_FILE_SIZE_S, file_size_str);
+		stms_str = BT_STR_FILE_SIZE_S;
+		snprintf(tmp, sizeof(tmp), stms_str, file_size_str);
 		g_strlcat(msg, tmp, BT_GLOBALIZATION_STR_LENGTH);
 
 		markup_text = elm_entry_utf8_to_markup(msg);
@@ -261,7 +265,8 @@ Evas_Object *_bt_create_ft_popup(bt_share_ft_popup_type_e type, bt_tr_data_t *in
 		elm_object_part_text_set(popup, "title,text", BT_STR_RECEIVED_FILES);
 		char file_size_str[BT_FILE_SIZE_STR] = { 0 };
 
-		snprintf(msg, sizeof(msg), BT_STR_FROM_S, info->dev_name);
+		stms_str = BT_STR_FROM_S;
+		snprintf(msg, sizeof(msg), stms_str, info->dev_name);
 		g_strlcat(msg, NEW_LINE, BT_GLOBALIZATION_STR_LENGTH);
 
 		name = strrchr(info->file_path, '/');
@@ -270,7 +275,8 @@ Evas_Object *_bt_create_ft_popup(bt_share_ft_popup_type_e type, bt_tr_data_t *in
 		else
 			name = info->file_path;
 
-		snprintf(tmp, sizeof(tmp), BT_STR_FILE_S, name);
+		stms_str = BT_STR_FILE_S;
+		snprintf(tmp, sizeof(tmp), stms_str, name);
 		g_strlcat(msg, tmp, BT_GLOBALIZATION_STR_LENGTH);
 		g_strlcat(msg, NEW_LINE, BT_GLOBALIZATION_STR_LENGTH);
 
@@ -285,7 +291,8 @@ Evas_Object *_bt_create_ft_popup(bt_share_ft_popup_type_e type, bt_tr_data_t *in
 			snprintf(file_size_str, sizeof(file_size_str),
 				"%dKB", info->size / 1024);
 
-		snprintf(tmp, sizeof(tmp), BT_STR_FILE_SIZE_S, file_size_str);
+		stms_str = BT_STR_FILE_SIZE_S;
+		snprintf(tmp, sizeof(tmp), stms_str, file_size_str);
 		g_strlcat(msg, tmp, BT_GLOBALIZATION_STR_LENGTH);
 
 		markup_text = elm_entry_utf8_to_markup(msg);
@@ -297,7 +304,8 @@ Evas_Object *_bt_create_ft_popup(bt_share_ft_popup_type_e type, bt_tr_data_t *in
 		g_strlcat(msg, BT_STR_FILE_NOT_RECV, BT_GLOBALIZATION_STR_LENGTH);
 		g_strlcat(msg, NEW_LINE, BT_GLOBALIZATION_STR_LENGTH);
 
-		snprintf(tmp, sizeof(tmp), BT_STR_FILE_S, info->file_path);
+		stms_str = BT_STR_FILE_S;
+		snprintf(tmp, sizeof(tmp), stms_str, info->file_path);
 		g_strlcat(msg, tmp, BT_GLOBALIZATION_STR_LENGTH);
 
 		markup_text = elm_entry_utf8_to_markup(msg);
@@ -309,7 +317,8 @@ Evas_Object *_bt_create_ft_popup(bt_share_ft_popup_type_e type, bt_tr_data_t *in
 		g_strlcat(msg, BT_STR_FILE_NOT_EXIST, BT_GLOBALIZATION_STR_LENGTH);
 		g_strlcat(msg, NEW_LINE, BT_GLOBALIZATION_STR_LENGTH);
 
-		snprintf(tmp, sizeof(tmp), BT_STR_FILE_S, info->file_path);
+		stms_str = BT_STR_FILE_S;
+		snprintf(tmp, sizeof(tmp), stms_str, info->file_path);
 		g_strlcat(msg, tmp, BT_GLOBALIZATION_STR_LENGTH);
 
 		markup_text = elm_entry_utf8_to_markup(msg);
@@ -317,7 +326,8 @@ Evas_Object *_bt_create_ft_popup(bt_share_ft_popup_type_e type, bt_tr_data_t *in
 	} else  if (type == BT_FT_RETRY_POPUP) {
 		elm_object_part_text_set(popup, "title,text", BT_STR_UNABLE_TO_SEND_FILES);
 
-		snprintf(msg, sizeof(msg), BT_STR_SEND_FAIL_TO_S, info->dev_name);
+		stms_str = BT_STR_SEND_FAIL_TO_S;
+		snprintf(msg, sizeof(msg), stms_str, info->dev_name);
 		g_strlcat(msg, NEW_LINE, BT_GLOBALIZATION_STR_LENGTH);
 
 		name = strrchr(info->file_path, '/');
@@ -326,7 +336,8 @@ Evas_Object *_bt_create_ft_popup(bt_share_ft_popup_type_e type, bt_tr_data_t *in
 		else
 			name = info->file_path;
 
-		snprintf(tmp, sizeof(tmp), BT_STR_FILE_S, name);
+		stms_str = BT_STR_FILE_S;
+		snprintf(tmp, sizeof(tmp), stms_str, name);
 		g_strlcat(msg, tmp, BT_GLOBALIZATION_STR_LENGTH);
 
 		markup_text = elm_entry_utf8_to_markup(msg);
@@ -371,13 +382,15 @@ void _bt_lang_changed_ft_popup(bt_share_appdata_t *ad)
 	char tmp[BT_GLOBALIZATION_STR_LENGTH] = { 0 };
 	char *name = NULL;
 	char *markup_text = NULL;
+	char *stms_str = NULL;
 	Evas_Object *btn1 = NULL;
 
 	if (ad->ft_type == BT_FT_SENT_POPUP) {
 		elm_object_part_text_set(ad->ft_popup, "title,text", BT_STR_SENT_FILES);
 		char file_size_str[BT_FILE_SIZE_STR] = { 0 };
 
-		snprintf(msg, sizeof(msg), BT_STR_FROM_S, ad->ft_info->dev_name);
+		stms_str = BT_STR_FROM_S;
+		snprintf(msg, sizeof(msg), stms_str, ad->ft_info->dev_name);
 		g_strlcat(msg, NEW_LINE, BT_GLOBALIZATION_STR_LENGTH);
 
 		name = strrchr(ad->ft_info->file_path, '/');
@@ -386,7 +399,8 @@ void _bt_lang_changed_ft_popup(bt_share_appdata_t *ad)
 		else
 			name = ad->ft_info->file_path;
 
-		snprintf(tmp, sizeof(tmp), BT_STR_FILE_S, name);
+		stms_str = BT_STR_FILE_S;
+		snprintf(tmp, sizeof(tmp), stms_str, name);
 		g_strlcat(msg, tmp, BT_GLOBALIZATION_STR_LENGTH);
 		g_strlcat(msg, NEW_LINE, BT_GLOBALIZATION_STR_LENGTH);
 
@@ -401,7 +415,8 @@ void _bt_lang_changed_ft_popup(bt_share_appdata_t *ad)
 			snprintf(file_size_str, sizeof(file_size_str),
 				"%dKB", ad->ft_info->size / 1024);
 
-		snprintf(tmp, sizeof(tmp), BT_STR_FILE_SIZE_S, file_size_str);
+		stms_str = BT_STR_FILE_SIZE_S;
+		snprintf(tmp, sizeof(tmp), stms_str, file_size_str);
 		g_strlcat(msg, tmp, BT_GLOBALIZATION_STR_LENGTH);
 
 		markup_text = elm_entry_utf8_to_markup(msg);
@@ -410,7 +425,8 @@ void _bt_lang_changed_ft_popup(bt_share_appdata_t *ad)
 		elm_object_part_text_set(ad->ft_popup, "title,text", BT_STR_RECEIVED_FILES);
 		char file_size_str[BT_FILE_SIZE_STR] = { 0 };
 
-		snprintf(msg, sizeof(msg), BT_STR_FROM_S, ad->ft_info->dev_name);
+		stms_str = BT_STR_FROM_S;
+		snprintf(msg, sizeof(msg), stms_str, ad->ft_info->dev_name);
 		g_strlcat(msg, NEW_LINE, BT_GLOBALIZATION_STR_LENGTH);
 
 		name = strrchr(ad->ft_info->file_path, '/');
@@ -419,7 +435,8 @@ void _bt_lang_changed_ft_popup(bt_share_appdata_t *ad)
 		else
 			name = ad->ft_info->file_path;
 
-		snprintf(tmp, sizeof(tmp), BT_STR_FILE_S, name);
+		stms_str = BT_STR_FILE_S;
+		snprintf(tmp, sizeof(tmp), stms_str, name);
 		g_strlcat(msg, tmp, BT_GLOBALIZATION_STR_LENGTH);
 		g_strlcat(msg, NEW_LINE, BT_GLOBALIZATION_STR_LENGTH);
 
@@ -434,7 +451,8 @@ void _bt_lang_changed_ft_popup(bt_share_appdata_t *ad)
 			snprintf(file_size_str, sizeof(file_size_str),
 				"%dKB", ad->ft_info->size / 1024);
 
-		snprintf(tmp, sizeof(tmp), BT_STR_FILE_SIZE_S, file_size_str);
+		stms_str = BT_STR_FILE_SIZE_S;
+		snprintf(tmp, sizeof(tmp), stms_str, file_size_str);
 		g_strlcat(msg, tmp, BT_GLOBALIZATION_STR_LENGTH);
 
 		markup_text = elm_entry_utf8_to_markup(msg);
@@ -445,11 +463,13 @@ void _bt_lang_changed_ft_popup(bt_share_appdata_t *ad)
 		g_strlcat(msg, BT_STR_FILE_NOT_RECV, BT_GLOBALIZATION_STR_LENGTH);
 		g_strlcat(msg, NEW_LINE, BT_GLOBALIZATION_STR_LENGTH);
 
-		snprintf(tmp, sizeof(tmp), BT_STR_FILE_S, ad->ft_info->file_path);
+		stms_str = BT_STR_FILE_S;
+		snprintf(tmp, sizeof(tmp), stms_str, ad->ft_info->file_path);
 		g_strlcat(msg, tmp, BT_GLOBALIZATION_STR_LENGTH);
 		g_strlcat(msg, NEW_LINE, BT_GLOBALIZATION_STR_LENGTH);
 
-		snprintf(tmp, sizeof(tmp), BT_STR_FAIL_S, BT_STR_TR_CANCELLED);
+		stms_str = BT_STR_FAIL_S;
+		snprintf(tmp, sizeof(tmp), stms_str, BT_STR_TR_CANCELLED);
 		g_strlcat(msg, tmp, BT_GLOBALIZATION_STR_LENGTH);
 
 		markup_text = elm_entry_utf8_to_markup(msg);
@@ -460,7 +480,8 @@ void _bt_lang_changed_ft_popup(bt_share_appdata_t *ad)
 		g_strlcat(msg, BT_STR_FILE_NOT_EXIST, BT_GLOBALIZATION_STR_LENGTH);
 		g_strlcat(msg, NEW_LINE, BT_GLOBALIZATION_STR_LENGTH);
 
-		snprintf(tmp, sizeof(tmp), BT_STR_FILE_S, ad->ft_info->file_path);
+		stms_str = BT_STR_FILE_S;
+		snprintf(tmp, sizeof(tmp), stms_str, ad->ft_info->file_path);
 		g_strlcat(msg, tmp, BT_GLOBALIZATION_STR_LENGTH);
 
 		markup_text = elm_entry_utf8_to_markup(msg);
@@ -468,7 +489,8 @@ void _bt_lang_changed_ft_popup(bt_share_appdata_t *ad)
 	} else  if (ad->ft_type == BT_FT_RETRY_POPUP) {
 		elm_object_part_text_set(ad->ft_popup, "title,text", BT_STR_UNABLE_TO_SEND_FILES);
 
-		snprintf(msg, sizeof(msg), BT_STR_SEND_FAIL_TO_S, ad->ft_info->dev_name);
+		stms_str = BT_STR_SEND_FAIL_TO_S;
+		snprintf(msg, sizeof(msg), stms_str, ad->ft_info->dev_name);
 		g_strlcat(msg, NEW_LINE, BT_GLOBALIZATION_STR_LENGTH);
 
 		name = strrchr(ad->ft_info->file_path, '/');
@@ -477,7 +499,8 @@ void _bt_lang_changed_ft_popup(bt_share_appdata_t *ad)
 		else
 			name = ad->ft_info->file_path;
 
-		snprintf(tmp, sizeof(tmp), BT_STR_FILE_S, name);
+		stms_str = BT_STR_FILE_S;
+		snprintf(tmp, sizeof(tmp), stms_str, name);
 		g_strlcat(msg, tmp, BT_GLOBALIZATION_STR_LENGTH);
 
 		markup_text = elm_entry_utf8_to_markup(msg);

@@ -42,6 +42,7 @@
 #include <app_extension.h>
 #endif
 #include <notification_list.h>
+#include <notification_internal.h>
 
 #include "applog.h"
 #include "bt-share-ui-view.h"
@@ -69,8 +70,6 @@ static void __bt_more_menu_cb(void *data,
 Evas_Object *_bt_create_win(const char *name)
 {
 	Evas_Object *eo = NULL;
-	int w;
-	int h;
 
 #if 0
 	eo = (Evas_Object *)app_get_preinitialized_window(name);
@@ -198,7 +197,7 @@ static void __bt_clear_list_btn_cb(void *data,
 		if (!db)
 			return;
 
-		table = ad->tr_type ? BT_DB_INBOUND : BT_DB_OUTBOUND;
+		table = ad->tr_type ? BT_TR_INBOUND : BT_TR_OUTBOUND;
 		bt_share_remove_all_tr_data(db, table);
 		bt_share_close_db(db);
 
@@ -206,7 +205,7 @@ static void __bt_clear_list_btn_cb(void *data,
 		notification_get_list(NOTIFICATION_TYPE_NOTI, -1, &list_head);
 		list_traverse = list_head;
 
-		if (ad->tr_type == BT_DB_INBOUND)
+		if (ad->tr_type == BT_TR_INBOUND)
 			opp_role = "bluetooth-share-opp-server";
 		else
 			opp_role = "bluetooth-share-opp-client";
@@ -541,16 +540,17 @@ void _bt_update_tr_notification(void *data)
 	notification_list_h list_head = NULL;
 	notification_list_h list_traverse = NULL;
 	char *app_id = NULL;
+	char *stms_str = NULL;
 
 	info = (bt_tr_data_t *)data;
 
-	DBG("Transfer type: %s", ad->tr_type == BT_DB_INBOUND ? "Receive" : "Sent");
+	DBG("Transfer type: %s", ad->tr_type == BT_TR_INBOUND ? "Receive" : "Sent");
 
 	db = bt_share_open_db();
 	if (!db)
 		return;
 
-	if (ad->tr_type == BT_DB_INBOUND)
+	if (ad->tr_type == BT_TR_INBOUND)
 		opp_role = "bluetooth-share-opp-server";
 	else
 		opp_role = "bluetooth-share-opp-client";
@@ -583,11 +583,14 @@ void _bt_update_tr_notification(void *data)
 		notification_delete_by_priv_id(app_id, NOTIFICATION_TYPE_NOTI, priv_id);
 	} else {
 		char str[BT_GLOBALIZATION_STR_LENGTH] = { 0 };
-		if (success == 1)
-			snprintf(str, sizeof(str), BT_STR_TR_1FILE_COPIED_STATUS, fail);
-		else
-			snprintf(str, sizeof(str), BT_STR_TR_COPIED_STATUS,
+		if (success == 1) {
+			stms_str = BT_STR_TR_1FILE_COPIED_STATUS;
+			snprintf(str, sizeof(str), stms_str, fail);
+		} else {
+			stms_str = BT_STR_TR_COPIED_STATUS;
+			snprintf(str, sizeof(str), stms_str,
 				 success, fail);
+		}
 
 		notification_set_content(noti, str, NULL);
 		notification_update(noti);
@@ -903,7 +906,7 @@ void _bt_nocontent_set(bt_share_appdata_t *ad, gboolean set)
 
 	}else {
 		genlist = __bt_add_tr_data_genlist(ad->tr_view, ad);
-		retvm_if (genlist == NULL, -1, "genlist is NULL!");
+		retm_if (genlist == NULL, "genlist is NULL!");
 
 		if (ad->tr_genlist) {
 			DBG("Clear the previous genlist");
@@ -986,7 +989,7 @@ static void __bt_move_clear_ctxpopup(Evas_Object *ctxpopup,
 	FN_END;
 }
 
-static void __bt_clear_btn_del_cb(void *data)
+void __bt_clear_btn_del_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	FN_START;
 	bt_share_appdata_t *ad = NULL;
