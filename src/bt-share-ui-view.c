@@ -261,7 +261,7 @@ static char *__bt_get_tr_timedate(time_t timestamp)
 
 	/* Get current time */
 	time(&rawtime);
-	current_time = localtime(&rawtime);
+	localtime_r(&rawtime, current_time);
 	retv_if(current_time == NULL, NULL);
 	cy = current_time->tm_year + 1900;
 	cm = current_time->tm_mon + 1;
