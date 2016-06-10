@@ -69,7 +69,6 @@ INSTALL(TARGETS ${PROJECT_NAME} DESTINATION bin)
 # install desktop file & icon
 SET(PREFIX ${CMAKE_INSTALL_PREFIX})
 INSTALL(FILES ${CMAKE_BINARY_DIR}/data/org.tizen.bluetooth-share-ui.xml DESTINATION /usr/share/packages)
-INSTALL(FILES ${CMAKE_BINARY_DIR}/data/org.tizen.bluetooth-share-ui.efl DESTINATION /etc/smack/accesses.d)
 INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/org.tizen.bluetooth-share-ui.png DESTINATION /usr/share/icons/default/small)
 
 ADD_CUSTOM_TARGET(bt-share-layout.edj

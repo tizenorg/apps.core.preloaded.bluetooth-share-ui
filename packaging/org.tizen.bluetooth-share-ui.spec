@@ -80,7 +80,6 @@ install -D -m 0644 LICENSE %{buildroot}%{_datadir}/license/org.tizen.bluetooth-s
 
 %files
 %manifest bluetooth-share-ui.manifest
-/etc/smack/accesses.d/org.tizen.bluetooth-share-ui.efl
 %defattr(-,root,root,-)
 %{_appdir}/org.tizen.bluetooth-share-ui/res/edje/bt-share-layout.edj
 %{_appdir}/org.tizen.bluetooth-share-ui/res/edje/images.edj
