@@ -49,6 +49,7 @@
 #include <bundle_internal.h>
 
 bt_share_appdata_t *app_state = NULL;
+bt_share_appdata_t app_data = {0,};
 
 static void __bt_lang_changed_cb(app_event_info_h event_info, void *data)
 {
@@ -353,8 +354,7 @@ EXPORT int main(int argc, char *argv[])
 
 	ui_app_lifecycle_callback_s callback = {0,};
 	app_event_handler_h lang_changed_handler;
-	bt_share_appdata_t ad = {0,};
-	app_state = &ad;
+	app_state = &app_data;
 
 	callback.create = __app_create;
 	callback.terminate = __app_terminate;
@@ -362,10 +362,10 @@ EXPORT int main(int argc, char *argv[])
 	callback.resume = __app_resume;
 	callback.app_control = __app_service;
 
-	ui_app_add_event_handler(&lang_changed_handler, APP_EVENT_LANGUAGE_CHANGED, __bt_lang_changed_cb, &ad);
+	ui_app_add_event_handler(&lang_changed_handler, APP_EVENT_LANGUAGE_CHANGED, __bt_lang_changed_cb, &app_data);
 
 	DBG("ui_app_main() is called.");
-	int ret = ui_app_main(argc, argv, &callback, &ad);
+	int ret = ui_app_main(argc, argv, &callback, &app_data);
 	if (ret != APP_ERROR_NONE) {
 		ERR("ui_app_main() is failed. err = %d", ret);
 	}
