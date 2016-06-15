@@ -579,9 +579,10 @@ void _bt_update_tr_notification(void *data)
 		list_traverse = notification_list_get_next(list_traverse);
 	}
 
-	if (success == 0 && fail == 0) {
+	if (success == 0 && fail == 0)
 		notification_delete_by_priv_id(app_id, NOTIFICATION_TYPE_NOTI, priv_id);
-	} else {
+#if 0
+	else {
 		char str[BT_GLOBALIZATION_STR_LENGTH] = { 0 };
 		if (success == 1) {
 			stms_str = BT_STR_TR_1FILE_COPIED_STATUS;
@@ -595,7 +596,7 @@ void _bt_update_tr_notification(void *data)
 		notification_set_content(noti, str, NULL);
 		notification_update(noti);
 	}
-
+#endif
 	if (list_head != NULL) {
 		notification_free_list(list_head);
 		list_head = NULL;
