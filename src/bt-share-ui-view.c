@@ -249,7 +249,7 @@ static void __bt_clear_list_btn_cb(void *data,
 static char *__bt_get_tr_timedate(time_t timestamp)
 {
 	struct tm *pt;
-	struct tm *current_time;
+	struct tm current_time;
 	time_t rawtime;
 	char buf[BT_TIMESTAMP_LEN_MAX] = { 0 };
 	int cy;
@@ -261,11 +261,11 @@ static char *__bt_get_tr_timedate(time_t timestamp)
 
 	/* Get current time */
 	time(&rawtime);
-	localtime_r(&rawtime, current_time);
-	retv_if(current_time == NULL, NULL);
-	cy = current_time->tm_year + 1900;
-	cm = current_time->tm_mon + 1;
-	cd = current_time->tm_mday;
+	localtime_r(&rawtime, &current_time);
+
+	cy = current_time.tm_year + 1900;
+	cm = current_time.tm_mon + 1;
+	cd = current_time.tm_mday;
 
 	/* Get recorded time */
 	pt = localtime(&timestamp);
