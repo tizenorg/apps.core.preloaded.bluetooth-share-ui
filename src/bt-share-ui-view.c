@@ -248,7 +248,7 @@ static void __bt_clear_list_btn_cb(void *data,
 
 static char *__bt_get_tr_timedate(time_t timestamp)
 {
-	struct tm *pt;
+	struct tm pt;
 	struct tm current_time;
 	time_t rawtime;
 	char buf[BT_TIMESTAMP_LEN_MAX] = { 0 };
@@ -268,11 +268,10 @@ static char *__bt_get_tr_timedate(time_t timestamp)
 	cd = current_time.tm_mday;
 
 	/* Get recorded time */
-	pt = localtime(&timestamp);
-	retv_if(pt == NULL, NULL);
-	ry = pt->tm_year + 1900;
-	rm = pt->tm_mon + 1;
-	rd = pt->tm_mday;
+	localtime_r(&timestamp, &pt);
+	ry = pt.tm_year + 1900;
+	rm = pt.tm_mon + 1;
+	rd = pt.tm_mday;
 
 	if (cy == ry && cm == rm && cd == rd) {
 		int format = 0;
@@ -281,12 +280,12 @@ static char *__bt_get_tr_timedate(time_t timestamp)
 		}
 
 		if (format == VCONFKEY_TIME_FORMAT_12)
-			if (pt->tm_hour >=0 && pt->tm_hour < 12)
-				strftime(buf, sizeof(buf), "%I:%M AM", pt);
+			if (pt.tm_hour >=0 && pt.tm_hour < 12)
+				strftime(buf, sizeof(buf), "%I:%M AM", &pt);
 			else
-				strftime(buf, sizeof(buf), "%I:%M PM", pt);
+				strftime(buf, sizeof(buf), "%I:%M PM", &pt);
 		else
-			strftime(buf, sizeof(buf), "%H:%M", pt);
+			strftime(buf, sizeof(buf), "%H:%M", &pt);
 	} else if (cy == ry && cm == rm && cd - 1 == rd) {
 		return g_strdup(BT_STR_YESTERDAY);
 	} else {
