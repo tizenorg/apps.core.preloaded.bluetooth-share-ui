@@ -539,7 +539,6 @@ void _bt_update_tr_notification(void *data)
 	notification_list_h list_head = NULL;
 	notification_list_h list_traverse = NULL;
 	char *app_id = NULL;
-	char *stms_str = NULL;
 
 	info = (bt_tr_data_t *)data;
 
