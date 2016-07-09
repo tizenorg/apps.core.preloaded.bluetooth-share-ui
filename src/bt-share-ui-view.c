@@ -298,7 +298,6 @@ static char *__bt_get_tr_timedate(time_t timestamp)
 static Evas_Object *__bt_tr_icon_get(void *data, Evas_Object *obj,
 					    const char *part)
 {
-	Evas_Object *ly = NULL;
 	Evas_Object *icon = NULL;
 	bt_tr_data_t *info = NULL;
 	bt_share_appdata_t *ad = app_state;
@@ -313,10 +312,7 @@ static Evas_Object *__bt_tr_icon_get(void *data, Evas_Object *obj,
 	retv_if(info == NULL, NULL);
 
 	if (!strcmp("elm.swallow.icon", part)) {
-		ly = elm_layout_add(obj);
-		elm_layout_theme_set(ly, "layout", "list/B/type.3", "default");
-
-		icon = elm_icon_add(obj);
+		icon = elm_image_add(obj);
 		if (ad->tr_type == BT_TR_OUTBOUND) {
 			img = (info->tr_status == BT_TR_SUCCESS) ?
 					BT_ICON_SEND_PASS : BT_ICON_SEND_FAIL;
@@ -328,14 +324,14 @@ static Evas_Object *__bt_tr_icon_get(void *data, Evas_Object *obj,
 		elm_image_file_set(icon, EDJ_IMAGES, img);
 		evas_object_size_hint_align_set(icon, EVAS_HINT_FILL, EVAS_HINT_FILL);
 		evas_object_size_hint_weight_set(icon, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+		evas_object_size_hint_min_set(icon, ELM_SCALE_SIZE(40), ELM_SCALE_SIZE(40));
 
 		evas_object_color_set(icon, 76, 76, 76 , 255);
 
 		evas_object_show(icon);
-		elm_layout_content_set(ly, "elm.swallow.content", icon);
 	}
 
-	return ly;
+	return icon;
 }
 
 static char *__bt_tr_label_get(void *data, Evas_Object *obj,
